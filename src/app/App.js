@@ -3,9 +3,11 @@ import './App.css';
 
 class App extends Component {
   render() {
+    const name = "Brother da Silva";
+
     return (
       <div className="App">
-        <h1>Github Finder</h1>
+        <h1>Hello, {name}!</h1>
       </div>
     );
   }
