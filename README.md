@@ -4,7 +4,7 @@ This project was bootstrapped with [Create React App](https://github.com/faceboo
 
 It consists mainly of a Github Finder application, where you can find and view users and their public repository information.
 
-It was built step-by-step by me as part of the learning process for the course [https://www.udemy.com/modern-react-front-to-back](React Front To Back) from [https://www.udemy.com](Udemy).
+It was built step-by-step by me as part of the learning process for the course [React Front To Back](https://www.udemy.com/modern-react-front-to-back) from [Udemy](https://www.udemy.com).
 
 ## How to Run
 ```
