@@ -27,61 +27,7 @@ class UserList extends Component {
                 "id": 4,
                 "avatar_url": "https://avatars0.githubusercontent.com/u/4?v=4",
                 "html_url": "https://github.com/wycats"
-            },
-            {
-                "login": "ezmobius",
-                "id": 5,
-                "avatar_url": "https://avatars0.githubusercontent.com/u/5?v=4",
-                "html_url": "https://github.com/ezmobius"
-            },
-            {
-                "login": "ivey",
-                "id": 6,
-                "avatar_url": "https://avatars0.githubusercontent.com/u/6?v=4",
-                "html_url": "https://github.com/ivey",
-            },
-            {
-                "login": "evanphx",
-                "id": 7,
-                "avatar_url": "https://avatars0.githubusercontent.com/u/7?v=4",
-                "html_url": "https://github.com/evanphx",
-            },
-            {
-                "login": "vanpelt",
-                "id": 17,
-                "avatar_url": "https://avatars1.githubusercontent.com/u/17?v=4",
-                "html_url": "https://github.com/vanpelt"
-            },
-            {
-                "login": "wayneeseguin",
-                "id": 18,
-                "avatar_url": "https://avatars0.githubusercontent.com/u/18?v=4",
-                "html_url": "https://github.com/wayneeseguin",
-            },
-            {
-                "login": "brynary",
-                "id": 19,
-                "avatar_url": "https://avatars0.githubusercontent.com/u/19?v=4",
-                "html_url": "https://github.com/brynary",
-            },
-            {
-                "login": "kevinclark",
-                "id": 20,
-                "avatar_url": "https://avatars3.githubusercontent.com/u/20?v=4",
-                "html_url": "https://github.com/kevinclark",
-            },
-            {
-                "login": "technoweenie",
-                "id": 21,
-                "avatar_url": "https://avatars3.githubusercontent.com/u/21?v=4",
-                "html_url": "https://github.com/technoweenie",
-            },
-            {
-                "login": "macournoyer",
-                "id": 22,
-                "avatar_url": "https://avatars3.githubusercontent.com/u/22?v=4",
-                "html_url": "https://github.com/macournoyer",
-            },
+            }
         ]
     };
 
