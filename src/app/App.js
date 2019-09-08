@@ -2,7 +2,8 @@ import React, { Component } from 'react';
 import axios from 'axios';
 
 import Navbar from '../components/layout/Navbar';
-import UserList from '../components/users/UserList'
+import Search from '../components/users/Search'
+import UserList from '../components/users/UserList';
 import './App.css';
 
 class App extends Component {
@@ -11,16 +12,24 @@ class App extends Component {
     loading: false
   };
 
-  async componentDidMount() {
+  searchUsers = async (text) => {
+    const hasFilter = text && text !== '';
+    const endpoint = hasFilter ? `search/users?q=${text}&` : "users?";
+
     this.setState({ loading: true });
-    
-    const res = await axios.get(`https://api.github.com/users?client_id=${process.env.REACT_APP_GITHUB_CLIENT_ID}
+
+    const res = await axios.get(`https://api.github.com/${endpoint}
+    client_id=${process.env.REACT_APP_GITHUB_CLIENT_ID}
     &client_secret=${process.env.REACT_APP_GITHUB_CLIENT_SECRET}`);
-    
-    this.setState({ users: res.data, loading: false });
+
+    this.setState({ users: hasFilter ? res.data.items : res.data, loading: false });
   };
 
-  render() {
+  componentDidMount = async () => {
+    this.searchUsers(null);
+  };
+
+  render = () => {
     return (
       <div className="App">
         <Navbar
@@ -28,6 +37,7 @@ class App extends Component {
           title="Github Finder" />
 
         <div className="container">
+          <Search searchUsers={this.searchUsers} />
           <UserList
             loading={this.state.loading}
             users={this.state.users} />
