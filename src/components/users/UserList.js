@@ -1,9 +1,9 @@
-import React from 'react'
+import React from 'react';
 import PropTypes from 'prop-types';
 
-import './UserList.css'
-import Spinner from '../layout/Spinner'
-import UserItem from './UserItem'
+import Spinner from '../layout/Spinner';
+import UserItem from './UserItem';
+import './UserList.css';
 
 
 const UserList = ({ loading, users }) => {
@@ -13,12 +13,12 @@ const UserList = ({ loading, users }) => {
                 <UserItem key={user.id} user={user} />
             ))};
             </div>
-    )
+    );
 };
 
 UserList.propTypes = {
     loading: PropTypes.bool.isRequired,
     users: PropTypes.array.isRequired
-}
+};
 
 export default UserList;
