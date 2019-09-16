@@ -11,8 +11,8 @@ const UserList = ({ loading, users }) => {
         <div className="user-list">
             {loading ? <Spinner /> : users.map(user => (
                 <UserItem key={user.id} user={user} />
-            ))};
-            </div>
+            ))}
+        </div>
     );
 };
 

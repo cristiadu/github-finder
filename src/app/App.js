@@ -13,8 +13,7 @@ class App extends Component {
   };
 
   searchUsers = async (text) => {
-    const hasFilter = text && text !== '';
-    const endpoint = hasFilter ? `search/users?q=${text}&` : "users?";
+    const endpoint = `search/users?q=${text}&`;
 
     this.setState({ loading: true });
 
@@ -22,14 +21,14 @@ class App extends Component {
     client_id=${process.env.REACT_APP_GITHUB_CLIENT_ID}
     &client_secret=${process.env.REACT_APP_GITHUB_CLIENT_SECRET}`);
 
-    this.setState({ users: hasFilter ? res.data.items : res.data, loading: false });
+    this.setState({ users: res.data.items, loading: false });
   };
 
-  componentDidMount = async () => {
-    this.searchUsers(null);
-  };
+  clearUsers = () => this.setState({ users: [], loading: false });
 
   render = () => {
+    const { users, loading } = this.state;
+
     return (
       <div className="App">
         <Navbar
@@ -37,10 +36,14 @@ class App extends Component {
           title="Github Finder" />
 
         <div className="container">
-          <Search searchUsers={this.searchUsers} />
+          <Search 
+            showClearButton={users.length > 0}
+            searchUsers={this.searchUsers}
+            clearUsers={this.clearUsers} />
+
           <UserList
-            loading={this.state.loading}
-            users={this.state.users} />
+            loading={loading}
+            users={users} />
         </div>
       </div>
     );
