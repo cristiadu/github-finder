@@ -8,25 +8,37 @@ import Alert from '../components/layout/Alert'
 import About from '../components/pages/About'
 import Search from '../components/users/Search'
 import UserList from '../components/users/UserList';
+import UserDetails from '../components/users/UserDetails';
 import './App.css';
 
 class App extends Component {
   state = {
     users: [],
+    user: {},
     loading: false,
     alert: null
   };
 
   searchUsers = async (text) => {
-    const endpoint = `search/users?q=${text}&`;
-
     this.setState({ loading: true });
+    const res = await this.callGithubApi(`search/users?q=${text}&`);
+    this.setState({ users: res.data.items, loading: false });
+  };
 
-    const res = await axios.get(`https://api.github.com/${endpoint}
+  getUser = async (username) => {
+    this.setState({ loading: true });
+    const res = await this.callGithubApi(`users/${username}?`);
+    this.setState({ user: res.data, loading: false });
+  };
+
+
+  // This is here because refactors will happen as the classes move forward.
+  // As this is a learning app, I will try to not refactor too much
+  // because the next step might undo my refactor.
+  callGithubApi = async (endpoint) => {
+    return axios.get(`https://api.github.com/${endpoint}
     client_id=${process.env.REACT_APP_GITHUB_CLIENT_ID}
     &client_secret=${process.env.REACT_APP_GITHUB_CLIENT_SECRET}`);
-
-    this.setState({ users: res.data.items, loading: false });
   };
 
   clearUsers = () => this.setState({ users: [], loading: false });
@@ -37,7 +49,7 @@ class App extends Component {
   };
 
   render = () => {
-    const { users, loading } = this.state;
+    const { users, loading, alert, user } = this.state;
 
     return (
       <Router>
@@ -47,7 +59,7 @@ class App extends Component {
             title="Github Finder" />
 
           <div className="container">
-            <Alert alert={this.state.alert} />
+            <Alert alert={alert} />
             <Switch>
               <Route exact path="/" render={() => (
                 <>
@@ -63,6 +75,13 @@ class App extends Component {
                 </>
               )} />
               <Route exact path="/about" component={About} />
+              <Route exact path="/user/:username" render={props => (
+                <UserDetails 
+                  { ...props } 
+                  getUser={this.getUser} 
+                  user={user} 
+                  loading={loading} />
+              )} />
             </Switch>
 
           </div>
