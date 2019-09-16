@@ -2,6 +2,8 @@ import React, { Component } from 'react';
 import axios from 'axios';
 
 import Navbar from '../components/layout/Navbar';
+import Alert from '../components/layout/Alert'
+
 import Search from '../components/users/Search'
 import UserList from '../components/users/UserList';
 import './App.css';
@@ -9,7 +11,8 @@ import './App.css';
 class App extends Component {
   state = {
     users: [],
-    loading: false
+    loading: false,
+    alert: null
   };
 
   searchUsers = async (text) => {
@@ -26,6 +29,11 @@ class App extends Component {
 
   clearUsers = () => this.setState({ users: [], loading: false });
 
+  setAlert = (message, type) => {
+    this.setState({ alert: { message, type }});
+    setTimeout(() => this.setState({ alert: null }), 3000);
+  };
+
   render = () => {
     const { users, loading } = this.state;
 
@@ -36,7 +44,9 @@ class App extends Component {
           title="Github Finder" />
 
         <div className="container">
+          <Alert alert={this.state.alert} />
           <Search 
+            setAlert={this.setAlert}
             showClearButton={users.length > 0}
             searchUsers={this.searchUsers}
             clearUsers={this.clearUsers} />
