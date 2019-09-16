@@ -15,6 +15,7 @@ class App extends Component {
   state = {
     users: [],
     user: {},
+    repos: [],
     loading: false,
     alert: null
   };
@@ -30,6 +31,12 @@ class App extends Component {
     const res = await this.callGithubApi(`users/${username}?`);
     this.setState({ user: res.data, loading: false });
   };
+
+  getUserRepos = async (username) => {
+    this.setState({ loading: true });
+    const res = await this.callGithubApi(`users/${username}/repos?per_page=6&sort=created:asc&`);
+    this.setState({ repos: res.data, loading: false });
+  }
 
 
   // This is here because refactors will happen as the classes move forward.
@@ -49,7 +56,7 @@ class App extends Component {
   };
 
   render = () => {
-    const { users, loading, alert, user } = this.state;
+    const { users, loading, alert, user, repos } = this.state;
 
     return (
       <Router>
@@ -79,7 +86,9 @@ class App extends Component {
                 <UserDetails 
                   { ...props } 
                   getUser={this.getUser} 
+                  getUserRepos={this.getUserRepos}
                   user={user} 
+                  repos={repos}
                   loading={loading} />
               )} />
             </Switch>

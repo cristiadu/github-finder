@@ -3,6 +3,7 @@ import PropTypes from 'prop-types';
 
 import Spinner from '../layout/Spinner';
 import UserItem from './UserItem';
+
 import './UserList.css';
 
 
