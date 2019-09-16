@@ -1,9 +1,11 @@
 import React, { Component } from 'react';
 import axios from 'axios';
+import { BrowserRouter as Router, Switch, Route } from 'react-router-dom'
 
 import Navbar from '../components/layout/Navbar';
 import Alert from '../components/layout/Alert'
 
+import About from '../components/pages/About'
 import Search from '../components/users/Search'
 import UserList from '../components/users/UserList';
 import './App.css';
@@ -30,7 +32,7 @@ class App extends Component {
   clearUsers = () => this.setState({ users: [], loading: false });
 
   setAlert = (message, type) => {
-    this.setState({ alert: { message, type }});
+    this.setState({ alert: { message, type } });
     setTimeout(() => this.setState({ alert: null }), 3000);
   };
 
@@ -38,24 +40,34 @@ class App extends Component {
     const { users, loading } = this.state;
 
     return (
-      <div className="App">
-        <Navbar
-          icon="fab fa-github"
-          title="Github Finder" />
+      <Router>
+        <div className="App">
+          <Navbar
+            icon="fab fa-github"
+            title="Github Finder" />
 
-        <div className="container">
-          <Alert alert={this.state.alert} />
-          <Search 
-            setAlert={this.setAlert}
-            showClearButton={users.length > 0}
-            searchUsers={this.searchUsers}
-            clearUsers={this.clearUsers} />
+          <div className="container">
+            <Alert alert={this.state.alert} />
+            <Switch>
+              <Route exact path="/" render={() => (
+                <>
+                  <Search
+                    setAlert={this.setAlert}
+                    showClearButton={users.length > 0}
+                    searchUsers={this.searchUsers}
+                    clearUsers={this.clearUsers} />
 
-          <UserList
-            loading={loading}
-            users={users} />
+                  <UserList
+                    loading={loading}
+                    users={users} />
+                </>
+              )} />
+              <Route exact path="/about" component={About} />
+            </Switch>
+
+          </div>
         </div>
-      </div>
+      </Router>
     );
   };
 };
