@@ -1,16 +1,19 @@
-import React, { useEffect } from 'react';
+import React, { useEffect, useContext } from 'react';
 import PropTypes from 'prop-types';
 import { Link } from 'react-router-dom';
 
 import Spinner from '../layout/Spinner';
 import RepoList from '../repos/RepoList';
 
-const UserDetails = ({ getUser, getUserRepos, user, loading, repos, match }) => {
-    useEffect(() => {
-        const username = match.params.username;
+import GithubContext from '../../context/github/GithubContext';
 
-        getUser(username);
-        getUserRepos(username);
+const UserDetails = ({ match: { params: { username } } }) => {
+    const githubContext = useContext(GithubContext);
+    const { user, loading, repos } = githubContext;
+
+    useEffect(() => {
+        githubContext.getUser(username);
+        githubContext.getUserRepos(username);
         // eslint-disable-next-line
     }, []);
 
@@ -89,11 +92,7 @@ const UserDetails = ({ getUser, getUserRepos, user, loading, repos, match }) => 
 };
 
 UserDetails.propTypes = {
-    loading: PropTypes.bool,
-    user: PropTypes.object.isRequired,
-    repos: PropTypes.array.isRequired,
-    getUser: PropTypes.func.isRequired,
-    getUserRepos: PropTypes.func.isRequired
+    match: PropTypes.object.isRequired
 };
 
 export default UserDetails;
