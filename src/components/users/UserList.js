@@ -6,7 +6,6 @@ import UserItem from './UserItem';
 
 import './UserList.css';
 
-
 const UserList = ({ loading, users }) => {
     return (
         <div className="user-list">
