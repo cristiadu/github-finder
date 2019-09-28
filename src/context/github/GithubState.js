@@ -11,6 +11,9 @@ import {
     GET_REPOS
 } from '../types';
 
+let githubClientId = process.env.REACT_APP_GITHUB_CLIENT_ID;
+let githubClientSecret = process.env.REACT_APP_GITHUB_CLIENT_SECRET;
+
 const GithubState = (props) => {
     const initialState = {
         users: [],
@@ -23,8 +26,8 @@ const GithubState = (props) => {
 
     const callGithubApi = async (endpoint) => {
         return axios.get(`https://api.github.com/${endpoint}
-        client_id=${process.env.REACT_APP_GITHUB_CLIENT_ID}
-        &client_secret=${process.env.REACT_APP_GITHUB_CLIENT_SECRET}`);
+        client_id=${githubClientId}
+        &client_secret=${githubClientSecret}`);
     };
 
     const searchUsers = async (text) => {

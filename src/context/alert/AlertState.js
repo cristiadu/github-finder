@@ -23,7 +23,7 @@ const AlertState = (props) => {
             alert: state,
             showAlert
         }} >
-        ${props.children}
+        {props.children}
     </AlertContext.Provider>
 };
 

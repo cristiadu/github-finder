@@ -2,11 +2,12 @@ import React from 'react';
 import { BrowserRouter as Router, Switch, Route } from 'react-router-dom'
 
 import Navbar from '../components/layout/Navbar';
-import Alert from '../components/layout/Alert'
+import Alert from '../components/layout/Alert';
 
-import About from '../components/pages/About'
-import Search from '../components/users/Search'
-import UserList from '../components/users/UserList';
+import NotFound from '../components/pages/NotFound';
+import About from '../components/pages/About';
+import Home from '../components/pages/Home';
+
 import UserDetails from '../components/users/UserDetails';
 
 import GithubState from '../context/github/GithubState';
@@ -25,19 +26,13 @@ const App = () => {
               title="Github Finder" />
 
             <div className="container">
-              <Alert alert={alert} />
-
+              <Alert />
               <Switch>
-                <Route exact path="/" render={() => (
-                  <>
-                    <Search />
-                    <UserList />
-                  </>
-                )} />
+                <Route exact path="/" component={Home} />
                 <Route exact path="/about" component={About} />
                 <Route exact path="/user/:username" component={UserDetails} />
+                <Route component={NotFound} />
               </Switch>
-
             </div>
           </div>
         </Router>
