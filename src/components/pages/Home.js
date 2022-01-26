@@ -1,15 +1,13 @@
-import React from 'react';
+import React from 'react'
 
-import Search from '../users/Search';
-import UserList from '../users/UserList';
+import Search from '../users/Search'
+import UserList from '../users/UserList'
 
-const Home = () => {
-    return (
+const Home = () => (
         <>
             <Search />
             <UserList />
         </>
-    );
-};
+)
 
-export default Home;
+export default Home

@@ -1,9 +1,8 @@
-import React from 'react';
-import PropTypes from 'prop-types';
-import { Link } from 'react-router-dom';
+import React from 'react'
+import PropTypes from 'prop-types'
+import { Link } from 'react-router-dom'
 
-const Navbar = ({ icon, title }) => {
-    return (
+const Navbar = ({ icon, title }) => (
         <nav className="navbar bg-primary">
             <h1>
                 <i className={icon} /> {title}
@@ -17,17 +16,16 @@ const Navbar = ({ icon, title }) => {
                 </li>
             </ul>
         </nav>
-    );
-};
+)
 
 Navbar.defaultProps = {
-    title: "Navbar",
-    icon: "fad fa-blog"
-};
+  title: 'Navbar',
+  icon: 'fad fa-blog',
+}
 
 Navbar.propTypes = {
-    title: PropTypes.string.isRequired,
-    icon: PropTypes.string.isRequired
-};
+  title: PropTypes.string.isRequired,
+  icon: PropTypes.string.isRequired,
+}
 
-export default Navbar;
+export default Navbar
