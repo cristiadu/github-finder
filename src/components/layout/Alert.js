@@ -8,9 +8,9 @@ const Alert = () => {
 
   return (
     alert !== null && (
-            <div className={`alert alert-${alert.type}`}>
-                <i className="fas fa-info-circle" /> {alert.message}
-            </div>
+      <div className={`alert alert-${alert.type}`}>
+        <i className="fas fa-info-circle" /> {alert.message}
+      </div>
     )
   )
 }

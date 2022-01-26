@@ -4,10 +4,10 @@ import Search from '../users/Search'
 import UserList from '../users/UserList'
 
 const Home = () => (
-        <>
-            <Search />
-            <UserList />
-        </>
+  <>
+    <Search />
+    <UserList />
+  </>
 )
 
 export default Home

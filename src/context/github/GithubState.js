@@ -51,18 +51,18 @@ const GithubState = (props) => {
   const clearUsers = () => dispatch({ type: CLEAR_USERS })
 
   return <GithubContext.Provider
-        value={{
-          users: state.users,
-          user: state.user,
-          repos: state.repos,
-          loading: state.loading,
-          searchUsers,
-          getUser,
-          getUserRepos,
-          clearUsers,
-        }}>
-        {props.children}
-    </GithubContext.Provider>
+    value={{
+      users: state.users,
+      user: state.user,
+      repos: state.repos,
+      loading: state.loading,
+      searchUsers,
+      getUser,
+      getUserRepos,
+      clearUsers,
+    }}>
+    {props.children}
+  </GithubContext.Provider>
 }
 
 GithubState.propTypes = {

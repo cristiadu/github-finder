@@ -30,19 +30,19 @@ const Search = () => {
   const { users } = githubContext
 
   return (
-        <div>
-            <form className="form" onSubmit={onSubmit}>
-                <input
-                    type="text"
-                    name="text"
-                    placeholder="Search Users..."
-                    value={text}
-                    onChange={onChange} />
+    <div>
+      <form className="form" onSubmit={onSubmit}>
+        <input
+          type="text"
+          name="text"
+          placeholder="Search Users..."
+          value={text}
+          onChange={onChange} />
 
-                <input type="submit" value="Search" className="btn btn-dark btn-block" />
-            </form>
-            {users.length > 0 && <button className="btn btn-light btn-block" onClick={githubContext.clearUsers}>Clear</button>}
-        </div>
+        <input type="submit" value="Search" className="btn btn-dark btn-block" />
+      </form>
+      {users.length > 0 && <button className="btn btn-light btn-block" onClick={githubContext.clearUsers}>Clear</button>}
+    </div>
   )
 }
 

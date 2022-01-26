@@ -12,11 +12,11 @@ const UserList = () => {
   const { loading, users } = githubContext
 
   return (
-        <div className="user-list">
-            {loading ? <Spinner /> : users.map((user) => (
-                <UserItem key={user.id} user={user} />
-            ))}
-        </div>
+    <div className="user-list">
+      {loading ? <Spinner /> : users.map((user) => (
+        <UserItem key={user.id} user={user} />
+      ))}
+    </div>
   )
 }
 
